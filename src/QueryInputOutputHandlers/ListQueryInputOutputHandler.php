@@ -45,7 +45,7 @@ class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
             return $ret;
         }
 
-        $ret[GD_URLPARAM_STOPFETCHING] = PoP_BaseCollectionData_Utils::stopFetching($dbObjectIDOrIDs, $data_properties);
+        $ret[GD_URLPARAM_STOPFETCHING] = Utils::stopFetching($dbObjectIDOrIDs, $data_properties);
 
         return $ret;
     }
@@ -67,8 +67,7 @@ class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
         }
 
         $pagenumber = $query_args[GD_URLPARAM_PAGENUMBER];
-        $nextpaged = '';
-        if (!PoP_BaseCollectionData_Utils::stopFetching($dbObjectIDOrIDs, $data_properties)) {
+        if (!Utils::stopFetching($dbObjectIDOrIDs, $data_properties)) {
             // When loading latest, we need to return the same $pagenumber as we got, because it must not alter the params
             $nextpagenumber = ($vars['loading-latest']) ? $pagenumber : $pagenumber + 1;
         }
@@ -105,7 +104,7 @@ class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
 
     //     $query_args = $data_properties[DataloadingConstants::QUERYARGS];
     //     $pagenumber = $query_args[GD_URLPARAM_PAGENUMBER];
-    //     $stop_loading = PoP_BaseCollectionData_Utils::stopFetching($dbobjectids, $data_properties);
+    //     $stop_loading = Utils::stopFetching($dbobjectids, $data_properties);
 
     //     $ret[GD_URLPARAM_STOPFETCHING] = $stop_loading;
 
@@ -178,7 +177,7 @@ class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
     //     // stop-fetching is loaded twice: in the params and in the feedback. This is because we can't access the params from the .tmpl files
     //     // (the params object is created only when initializing JS => after rendering the html with Handlebars so it's not available by then)
     //     // and this value is needed in fetchmore.tmpl
-    //     $stop_loading = PoP_BaseCollectionData_Utils::stopFetching($dbobjectids, $data_properties);
+    //     $stop_loading = Utils::stopFetching($dbobjectids, $data_properties);
 
     //     $ret[GD_URLPARAM_STOPFETCHING] = $stop_loading;
 
