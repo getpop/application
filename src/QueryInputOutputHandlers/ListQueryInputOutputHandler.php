@@ -1,4 +1,5 @@
 <?php
+namespace PoP\Application\QueryInputOutputHandlers;
 use PoP\ComponentModel\QueryInputOutputHandlers\AbstractQueryInputOutputHandler;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 
