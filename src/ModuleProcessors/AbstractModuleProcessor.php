@@ -4,6 +4,7 @@ use PoP\API\ModuleProcessors\ModuleProcessorTrait;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\Server\Utils as ServerUtils;
 use PoP\ComponentModel\Engine_Vars;
+use PoP\Application\Constants\Actions;
 
 abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\ModuleProcessors\AbstractModuleProcessor implements ModuleProcessorInterface
 {
@@ -59,7 +60,7 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
         // Do not load data for Search page (initially, before the query was submitted)
         // Do not load data when querying data from another domain, since evidently we don't have that data in this application, then the load must be triggered from the client
         $ret[DataloadingConstants::SKIPDATALOAD] =
-            (!in_array(POP_ACTION_LOADLAZY, $vars['actions'])  && $ret[DataloadingConstants::LAZYLOAD]) ||
+            (!in_array(Actions::LOADLAZY, $vars['actions'])  && $ret[DataloadingConstants::LAZYLOAD]) ||
             $ret[DataloadingConstants::EXTERNALLOAD] ||
             $this->getProp($module, $props, 'skip-data-load');
 
@@ -113,6 +114,11 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
 
         $multidomain_urls = $this->getDataloadMultidomainSources($module, $props);
         return is_array($multidomain_urls) && count($multidomain_urls) >= 2;
+    }
+
+    public function isLazyload(array $module, array &$props): bool
+    {
+        return $this->getProp($module, $props, 'lazy-load') ?? false;
     }
 
     public function initModelProps(array $module, array &$props)

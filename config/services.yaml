@@ -1,0 +1,7 @@
+services:
+    PoP\Application\ModuleFilters\:
+        resource: '../src/ModuleFilters/*'
+
+    PoP\Application\Hooks\:
+        resource: '../src/Hooks/*'
+        public: true
