@@ -15,3 +15,7 @@ services:
     PoP\Application\LooseContracts\:
         resource: '../src/LooseContracts/*'
         public: true
+
+    engine:
+        class: \PoP\Application\Engine\Engine
+        public: true
