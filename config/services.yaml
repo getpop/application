@@ -1,4 +1,8 @@
 services:
+    _defaults:
+        bind:
+            PoP\LooseContracts\Contracts\LooseContractManagerInterface: '@loose_contract_manager'
+
     PoP\Application\ModuleFilters\:
         resource: '../src/ModuleFilters/*'
 
