@@ -2,6 +2,8 @@ services:
     _defaults:
         bind:
             PoP\LooseContracts\Contracts\LooseContractManagerInterface: '@loose_contract_manager'
+            PoP\Hooks\Contracts\HooksAPIInterface: '@hooks_api'
+            PoP\Translation\Contracts\TranslationAPIInterface: '@translation_api'
 
     PoP\Application\ModuleFilters\:
         resource: '../src/ModuleFilters/*'
