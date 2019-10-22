@@ -1,4 +1,4 @@
-# Application Builder
+# Application
 
 <!--
 [![Latest Version on Packagist][ico-version]][link-packagist]
@@ -30,14 +30,6 @@ $ composer require getpop/application dev-master
 }
 ```
 
-## Architecture foundations
-
-Layouts are rendered through custom-built reactivity, based on observing a unique JavaScript object (which contains database and configuration data).
-
-The view is implemented through [Handlebars](https://handlebarsjs.com/) templates, which can be loaded both in the client (through the Handlebars runtime) and in the server (through PHP library [LightnCandy](https://github.com/zordius/lightncandy)). This approach is isomorphic: the same code works on both environments.
-
-Implementation coming soon.
-
 ## Main Concepts
 
 ### Multidomain
@@ -50,23 +42,9 @@ A single component is also able to have many sources of data, each of them comin
 
 ![Multidomain events calendar](https://uploads.getpop.org/wp-content/uploads/2018/12/multidomain-events-calendar.png)
 
-### Rendering through JavaScript templates
-
-Will be added soon...
-
-### Isomorphic Server-Side Rendering
-
-Will be added soon...
-
-### Reactivity
-
-Will be added soon...
-
 ## Architecture Design and Implementation
 
 #### Dataloading
-
-#### Dataloading Modules
 
 ##### Lazy-Loading
 
@@ -162,109 +140,9 @@ When fetching data from several sources, each source will keep its own state in 
 
 Because the external application may have different components installed, it is not guaranteed that fetching data from the external application by simply adding `?output=json` will bring the data required by the origin application. To solve this issue, when querying data from an external application, PoP will use the [custom-querying API](#Custom-Querying-API) to fetch exactly the required data fields (this works for fetching database data, not configuration). If we have control on the external application and we can guarantee that both sites have the same components installed, then we can define constant `EXTERNAL_SITES_RUN_SAME_SOFTWARE` as true, which will allow to fetch database and configuration data through the regular `?output=json` request.
 
-### Handlebars
-
-Will be added soon...
-
-### LightnCandy
-
-Will be added soon...
-
-### Code Splitting
-
-Will be added soon...
-
-### Progressive-Web App
-
-Will be added soon...
-
-### Single-Page Application
-
-Will be added soon...
-
-### Content CDN
-
-Will be added soon...
-
-### A/B Testing
-
-Will be added soon...
-
-### Form Input Modules
-
-Will be added soon...
-
-### Client-side Rendering
-
-Will be added soon...
-
-### JavaScript templates through Handlebars
-
-Will be added soon...
-
-### Executing JavaScript functions
-
-Will be added soon...
-
-### Resources
-
-Will be added soon...
-
-### Asset-bundling
-
-Will be added soon...
-
-### Progressive Booting
-
-Will be added soon...
-
-### Links in body
-
-Will be added soon...
-
-### State Management
-
-Will be added soon...
-
-### Data Cache, Configuration Cache and Replication
-
-Will be added soon...
-
-### Reactivity
-
-Will be added soon...
-
-## Server-Side Rendering
-
-Will be added soon...
-
-### Isomorphism
-
-Will be added soon...
-
-### JavaScript templates into PHP through LightnCandy
-
-Will be added soon...
-
-### Rendering a Webpage as a Transactional Email
-
-Will be added soon...
-
-## Examples
-
-### Application extending from the API
-
-> Note: The examples below are currently not deployed... Will do so soon...
-
-The native API can be extended by adding the other layers (configuration, view) to create the application:
-
-- [The homepage](https://nextapi.getpop.org/?output=json&mangled=none&dataoutputmode=combined), [a single post](https://nextapi.getpop.org/posts/a-lovely-tango/?output=json&mangled=none&dataoutputmode=combined), [an author](https://nextapi.getpop.org/u/leo/?output=json&mangled=none&dataoutputmode=combined), [a list of posts](https://nextapi.getpop.org/posts/?output=json&mangled=none&dataoutputmode=combined) and [a list of users](https://nextapi.getpop.org/users/?output=json&mangled=none&dataoutputmode=combined)
-- [An event, filtering from a specific module](https://nextapi.getpop.org/events/coldplay-in-london/?output=json&mangled=none&modulefilter=modulepaths&modulepaths[]=pagesectiongroup.pagesection-body.block-singlepost.block-single-content&dataoutputmode=combined)
-- A tag, [filtering modules which require user state](https://nextapi.getpop.org/tags/internet/?output=json&mangled=none&modulefilter=userstate&dataoutputmode=combined) and [filtering to bring only a page from a Single-Page Application](https://nextapi.getpop.org/tags/internet/?output=json&mangled=none&modulefilter=page&dataoutputmode=combined)
-- [An array of locations, to feed into a typeahead](https://nextapi.getpop.org/locations/?output=json&mangled=none&modulefilter=maincontentmodule&dataoutputmode=combined&datastructure=results)
-- Alternative models for the "Who we are" page: [Normal](https://nextapi.getpop.org/who-we-are/?output=json&mangled=none&dataoutputmode=combined), [Printable](https://nextapi.getpop.org/who-we-are/?output=json&mangled=none&thememode=print&dataoutputmode=combined), [Embeddable](https://nextapi.getpop.org/who-we-are/?output=json&mangled=none&thememode=embed&dataoutputmode=combined)
-- Changing the module names: [original](https://nextapi.getpop.org/?output=json&mangled=none&dataoutputmode=combined) vs [mangled](https://nextapi.getpop.org/?output=json&dataoutputmode=combined)
-- Filtering information: [only module settings](https://nextapi.getpop.org/?output=json&dataoutputitems[]=modulesettings&dataoutputmode=combined&mangled=none), [module data plus database data](https://nextapi.getpop.org/?output=json&dataoutputitems[]=databases&dataoutputitems[]=moduledata&dataoutputmode=combined&mangled=none)
+---
+---
+---
 
 ## Change log
 
