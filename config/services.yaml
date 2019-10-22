@@ -5,3 +5,7 @@ services:
     PoP\Application\Hooks\:
         resource: '../src/Hooks/*'
         public: true
+
+    PoP\Application\LooseContracts\:
+        resource: '../src/LooseContracts/*'
+        public: true

@@ -2,6 +2,7 @@
 namespace PoP\Application\QueryInputOutputHandlers;
 use PoP\ComponentModel\QueryInputOutputHandlers\AbstractQueryInputOutputHandler;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
+use PoP\LooseContracts\Facades\Contracts\NameResolverFacade;
 
 class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
 {
@@ -9,19 +10,23 @@ class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
     {
         parent::prepareQueryArgs($query_args);
 
-        $pagenumber = $query_args[GD_URLPARAM_PAGENUMBER];
-        $limit = $query_args[GD_URLPARAM_LIMIT];
-
-        // Do not allow more than 10 times the set amount (so that hackers cannot bring the website down)
+        // Handle edge cases for the limit (for security measures)
         $cmsengineapi = \PoP\Engine\FunctionAPIFactory::getInstance();
-        $posts_per_page = $cmsengineapi->getOption(\PoP\LooseContracts\NameResolverFactory::getInstance()->getName('popcms:option:limit'));
-        if ($limit > $posts_per_page * 10) {
-            $limit = $posts_per_page * 10;
+        $configuredLimit = $cmsengineapi->getOption(NameResolverFacade::getInstance()->getName('popcms:option:limit'));
+        if (isset($query_args[GD_URLPARAM_LIMIT])) {
+            $limit = $query_args[GD_URLPARAM_LIMIT];
+            if ($limit === -1 || $limit === 0) {
+                // Avoid users querying all results (by passing limit=-1 or limit=0)
+                $limit = $configuredLimit;
+            } elseif ($limit > $configuredLimit * 10) {
+                // Do not allow more than 10 times the set amount
+                $limit = $configuredLimit * 10;
+            }
+        } else {
+            $limit = $configuredLimit;
         }
-
-        $query_args[GD_URLPARAM_PAGENUMBER] = $pagenumber ? intval($pagenumber) : 1;
-        // Allow for Limit to be 0 (eg: Events Calendar), in that case it's valid, keep it
-        $query_args[GD_URLPARAM_LIMIT] = $limit ? intval($limit) : $posts_per_page;
+        $query_args[GD_URLPARAM_LIMIT] = intval($limit);
+        $query_args[GD_URLPARAM_PAGENUMBER] = $query_args[GD_URLPARAM_PAGENUMBER] ? intval($query_args[GD_URLPARAM_PAGENUMBER]) : 1;
     }
 
     public function getQueryState($data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs): array
