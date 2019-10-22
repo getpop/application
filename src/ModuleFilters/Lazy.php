@@ -1,5 +1,5 @@
 <?php
-namespace PoP\Engine\ModuleFilters;
+namespace PoP\Application\ModuleFilters;
 
 use PoP\ComponentModel\ModuleFilters\AbstractModuleFilter;
 use PoP\ComponentModel\Facades\Managers\ModuleProcessorManagerFacade;
