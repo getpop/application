@@ -2,7 +2,7 @@
 namespace PoP\Application\QueryInputOutputHandlers;
 use PoP\ComponentModel\QueryInputOutputHandlers\AbstractQueryInputOutputHandler;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
-use PoP\LooseContracts\Facades\Contracts\NameResolverFacade;
+use PoP\LooseContracts\Facades\NameResolverFacade;
 
 class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
 {

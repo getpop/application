@@ -1,7 +1,7 @@
 <?php
 namespace PoP\Application\LooseContracts;
 
-use PoP\LooseContracts\Contracts\AbstractLooseContractSet;
+use PoP\LooseContracts\AbstractLooseContractSet;
 
 class LooseContractSet extends AbstractLooseContractSet
 {
