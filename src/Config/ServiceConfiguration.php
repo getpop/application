@@ -1,8 +1,9 @@
 <?php
 namespace PoP\Application\Config;
 
-use PoP\ComponentModel\Container\ContainerBuilderUtils;
+use PoP\ComponentModel\Modules\DefinitionGroups;
 use PoP\Root\Component\PHPServiceConfigurationTrait;
+use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
 class ServiceConfiguration
 {
@@ -15,6 +16,14 @@ class ServiceConfiguration
             'module_filter_manager',
             'PoP\\Application\\ModuleFilters',
             'add'
+        );
+
+        // Set the definition resolver
+        ContainerBuilderUtils::injectValuesIntoService(
+            'definition_manager',
+            'setDefinitionResolver',
+            '@emoji_definition_resolver',
+            DefinitionGroups::MODULES
         );
     }
 }

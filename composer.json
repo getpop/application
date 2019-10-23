@@ -20,7 +20,9 @@
     "require": {
         "php" : "~7.1",
         "getpop/component-model-configuration": "^1.0@dev",
-        "getpop/api": "^1.0@dev"
+        "getpop/api": "^1.0@dev",
+        "getpop/definitions-emoji": "dev-master",
+        "getpop/definitionpersistence": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit" : ">=7.0",
