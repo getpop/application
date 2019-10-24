@@ -60,7 +60,10 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
         // Do not load data for Search page (initially, before the query was submitted)
         // Do not load data when querying data from another domain, since evidently we don't have that data in this application, then the load must be triggered from the client
         $ret[DataloadingConstants::SKIPDATALOAD] =
-            (!in_array(Actions::LOADLAZY, $vars['actions']) && $ret[DataloadingConstants::LAZYLOAD]) ||
+            (
+                $ret[DataloadingConstants::LAZYLOAD] && 
+                !in_array(Actions::LOADLAZY, $vars['actions'])
+            ) ||
             $ret[DataloadingConstants::EXTERNALLOAD] ||
             $this->getProp($module, $props, 'skip-data-load');
 
