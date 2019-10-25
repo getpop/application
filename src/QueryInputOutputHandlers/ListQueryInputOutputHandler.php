@@ -1,32 +1,14 @@
 <?php
 namespace PoP\Application\QueryInputOutputHandlers;
-use PoP\ComponentModel\QueryInputOutputHandlers\AbstractQueryInputOutputHandler;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 
-class ListQueryInputOutputHandler extends AbstractQueryInputOutputHandler
+class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHandlers\ListQueryInputOutputHandler
 {
-    public function prepareQueryArgs(&$query_args)
+    protected function getLimit()
     {
-        parent::prepareQueryArgs($query_args);
-
-        // Handle edge cases for the limit (for security measures)
         $cmsengineapi = \PoP\Engine\FunctionAPIFactory::getInstance();
-        $configuredLimit = $cmsengineapi->getOption(NameResolverFacade::getInstance()->getName('popcms:option:limit'));
-        if (isset($query_args[GD_URLPARAM_LIMIT])) {
-            $limit = $query_args[GD_URLPARAM_LIMIT];
-            if ($limit === -1 || $limit === 0) {
-                // Avoid users querying all results (by passing limit=-1 or limit=0)
-                $limit = $configuredLimit;
-            } elseif ($limit > $configuredLimit * 10) {
-                // Do not allow more than 10 times the set amount
-                $limit = $configuredLimit * 10;
-            }
-        } else {
-            $limit = $configuredLimit;
-        }
-        $query_args[GD_URLPARAM_LIMIT] = intval($limit);
-        $query_args[GD_URLPARAM_PAGENUMBER] = $query_args[GD_URLPARAM_PAGENUMBER] ? intval($query_args[GD_URLPARAM_PAGENUMBER]) : 1;
+        return $cmsengineapi->getOption(NameResolverFacade::getInstance()->getName('popcms:option:limit'));
     }
 
     public function getQueryState($data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs): array
