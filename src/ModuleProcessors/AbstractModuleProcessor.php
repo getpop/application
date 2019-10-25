@@ -1,6 +1,6 @@
 <?php
 namespace PoP\Application\ModuleProcessors;
-use PoP\API\ModuleProcessors\ModuleProcessorTrait;
+use PoP\API\ModuleProcessors\AddAPIQueryToSourcesModuleProcessorTrait;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\Server\Utils as ServerUtils;
 use PoP\ComponentModel\Engine_Vars;
@@ -8,7 +8,7 @@ use PoP\Application\Constants\Actions;
 
 abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\ModuleProcessors\AbstractModuleProcessor implements ModuleProcessorInterface
 {
-    use ModuleProcessorTrait;
+    use AddAPIQueryToSourcesModuleProcessorTrait;
 
     public function getDatasetmeta(array $module, array &$props, array $data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs): array
     {
@@ -61,7 +61,7 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
         // Do not load data when querying data from another domain, since evidently we don't have that data in this application, then the load must be triggered from the client
         $ret[DataloadingConstants::SKIPDATALOAD] =
             (
-                $ret[DataloadingConstants::LAZYLOAD] && 
+                $ret[DataloadingConstants::LAZYLOAD] &&
                 !in_array(Actions::LOADLAZY, $vars['actions'])
             ) ||
             $ret[DataloadingConstants::EXTERNALLOAD] ||
