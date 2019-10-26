@@ -2,7 +2,7 @@
 namespace PoP\Application\ModuleFilters;
 
 use PoP\ComponentModel\ModuleFilters\AbstractModuleFilter;
-use PoP\ComponentModel\Facades\Managers\ModuleProcessorManagerFacade;
+use PoP\ComponentModel\Facades\ModuleProcessors\ModuleProcessorManagerFacade;
 
 class Lazy extends AbstractModuleFilter
 {
