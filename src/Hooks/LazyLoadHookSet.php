@@ -1,6 +1,6 @@
 <?php
 namespace PoP\Application\Hooks;
-use PoP\ComponentModel\Managers\ModuleFilterManager;
+use PoP\ComponentModel\ModuleFilters\ModuleFilterManager;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\GeneralUtils;
 use PoP\Engine\Hooks\AbstractHookSet;
