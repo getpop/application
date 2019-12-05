@@ -33,7 +33,7 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
         $ret = parent::getModelPropsForDescendantDatasetmodules($module, $props);
 
         // If this module loads data, then add several properties
-        if ($this->getTypeDataResolverClass($module)) {
+        if ($this->moduleLoadsData($module)) {
             if ($this->queriesExternalDomain($module, $props)) {
                 $ret['external-domain'] = true;
             }
@@ -126,8 +126,8 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
 
     public function initModelProps(array $module, array &$props)
     {
-        // If it is a typeDataResolver module, then set all the props related to data
-        if ($this->getTypeDataResolverClass($module)) {
+        // If it is a dataloading module, then set all the props related to data
+        if ($this->moduleLoadsData($module)) {
             // If it is multidomain, add a flag for inner layouts to know and react
             if ($this->isMultidomain($module, $props)) {
                 // $this->add_general_prop($props, 'is-multidomain', true);
