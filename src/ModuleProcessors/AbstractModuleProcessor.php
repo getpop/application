@@ -126,7 +126,7 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
 
     public function initModelProps(array $module, array &$props)
     {
-        // If it is a dataloader module, then set all the props related to data
+        // If it is a typeDataResolver module, then set all the props related to data
         if ($this->getDataloaderClass($module)) {
             // If it is multidomain, add a flag for inner layouts to know and react
             if ($this->isMultidomain($module, $props)) {
