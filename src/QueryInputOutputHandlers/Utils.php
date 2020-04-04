@@ -1,6 +1,8 @@
 <?php
 namespace PoP\Application\QueryInputOutputHandlers;
+
 use PoP\ComponentModel\ModuleProcessors\DataloadingConstants;
+use PoP\ComponentModel\State\ApplicationState;
 
 class Utils
 {
@@ -12,7 +14,7 @@ class Utils
         }
 
         // Do not announce to stop loading when doing loadLatest
-        $vars = \PoP\ComponentModel\Engine_Vars::getVars();
+        $vars = ApplicationState::getVars();
         if ($vars['loading-latest']) {
             return false;
         }

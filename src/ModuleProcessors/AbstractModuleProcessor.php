@@ -3,7 +3,7 @@ namespace PoP\Application\ModuleProcessors;
 use PoP\API\ModuleProcessors\AddAPIQueryToSourcesModuleProcessorTrait;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\Server\Utils as ServerUtils;
-use PoP\ComponentModel\Engine_Vars;
+use PoP\ComponentModel\State\ApplicationState;
 use PoP\Application\Constants\Actions;
 
 abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\ModuleProcessors\AbstractModuleProcessor implements ModuleProcessorInterface
@@ -51,7 +51,7 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
     {
         parent::addHeaddatasetmoduleDataProperties($ret, $module, $props);
 
-        $vars = Engine_Vars::getVars();
+        $vars = ApplicationState::getVars();
 
         // Is the component lazy-load?
         $ret[DataloadingConstants::LAZYLOAD] = $this->isLazyload($module, $props);

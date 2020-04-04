@@ -1,7 +1,9 @@
 <?php
 namespace PoP\Application\QueryInputOutputHandlers;
+
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\LooseContracts\Facades\NameResolverFacade;
+use PoP\ComponentModel\State\ApplicationState;
 
 class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHandlers\ListQueryInputOutputHandler
 {
@@ -14,7 +16,7 @@ class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHa
     public function getQueryState($data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs): array
     {
         $ret = parent::getQueryState($data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs);
-        $vars = \PoP\ComponentModel\Engine_Vars::getVars();
+        $vars = ApplicationState::getVars();
 
         // Needed to loadLatest, to know from what time to get results
         if ($data_properties[DataloadingConstants::DATASOURCE] == POP_DATALOAD_DATASOURCE_MUTABLEONREQUEST) {
@@ -40,7 +42,7 @@ class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHa
     public function getQueryParams($data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs): array
     {
         $ret = parent::getQueryParams($data_properties, $dataaccess_checkpoint_validation, $actionexecution_checkpoint_validation, $executed, $dbObjectIDOrIDs);
-        $vars = \PoP\ComponentModel\Engine_Vars::getVars();
+        $vars = ApplicationState::getVars();
 
         // If data is not to be loaded, then "stop-fetching" as to not show the Load More button
         if ($data_properties[DataloadingConstants::SKIPDATALOAD] || $data_properties[DataloadingConstants::DATASOURCE] != POP_DATALOAD_DATASOURCE_MUTABLEONREQUEST) {
