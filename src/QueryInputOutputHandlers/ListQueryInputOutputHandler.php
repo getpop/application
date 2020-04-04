@@ -144,7 +144,7 @@ class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHa
     //     $msgs = array();
 
     //     // Show error message if no items, but only if the checkpoint did not fail
-    //     $checkpoint_failed = \PoP\ComponentModel\GeneralUtils::isError($dataaccess_checkpoint_validation);
+    //     $checkpoint_failed = GeneralUtils::isError($dataaccess_checkpoint_validation);
     //     if (!$checkpoint_failed) {
     //         if (empty($dbobjectids)) {
 
