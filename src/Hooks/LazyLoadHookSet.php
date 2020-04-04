@@ -6,6 +6,7 @@ use PoP\ComponentModel\Misc\GeneralUtils;
 use PoP\Engine\Hooks\AbstractHookSet;
 use PoP\Application\Constants\Actions;
 use PoP\Application\ModuleFilters\Lazy;
+use PoP\ComponentModel\Misc\RequestUtils;
 
 class LazyLoadHookSet extends AbstractHookSet
 {
@@ -61,7 +62,7 @@ class LazyLoadHookSet extends AbstractHookSet
                 ],
                 ModuleFilterManager::URLPARAM_MODULEFILTER => Lazy::NAME,
                 GD_URLPARAM_ACTIONS.'[]' => Actions::LOADLAZY,
-            ], \PoP\ComponentModel\Utils::getCurrentUrl());
+            ], RequestUtils::getCurrentUrl());
             $engine->addBackgroundUrl($url, array(POP_TARGET_MAIN));
         }
     }
