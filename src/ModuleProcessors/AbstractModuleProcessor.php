@@ -1,5 +1,6 @@
 <?php
 namespace PoP\Application\ModuleProcessors;
+
 use PoP\API\ModuleProcessors\AddAPIQueryToSourcesModuleProcessorTrait;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\Server\Utils as ServerUtils;
