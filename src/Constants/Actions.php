@@ -1,6 +1,7 @@
 <?php
 namespace PoP\Application\Constants;
 
-class Actions {
+class Actions
+{
     public const LOADLAZY = 'loadlazy';
 }

@@ -5,10 +5,11 @@ use PoP\LooseContracts\AbstractLooseContractSet;
 
 class LooseContractSet extends AbstractLooseContractSet
 {
-    public function getRequiredNames() {
-		return [
+    public function getRequiredNames()
+    {
+        return [
             // Options
-			'popcms:option:limit',
+            'popcms:option:limit',
         ];
-	}
+    }
 }
