@@ -16,7 +16,7 @@ Create a component-based website
 Via Composer
 
 ``` bash
-$ composer require getpop/application dev-master
+composer require getpop/application dev-master
 ```
 
 **Note:** Your `composer.json` file must have the configuration below to accept minimum stability `"dev"` (there are no releases for PoP yet, and the code is installed directly from the `master` branch):
@@ -44,9 +44,9 @@ A single component is also able to have many sources of data, each of them comin
 
 ## Architecture Design and Implementation
 
-#### Dataloading
+### Dataloading
 
-##### Lazy-Loading
+#### Lazy-Loading
 
 We can instruct a dataloading module to be lazy-loaded (i.e. instead of fetching its database data immediately, it is fetched on a subsequent request from the client) simply by setting its prop `"lazy-load"` to `true`:
 
@@ -151,7 +151,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ composer test
+composer test
 ```
 
 ## Contributing
