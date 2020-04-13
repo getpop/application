@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\Application\ModuleProcessors;
 
 class DataloadingConstants extends \PoP\ComponentModel\ModuleProcessors\DataloadingConstants

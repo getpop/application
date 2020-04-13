@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\Application\ModuleProcessors;
 
 use PoP\API\ModuleProcessors\AddAPIQueryToSourcesModuleProcessorTrait;

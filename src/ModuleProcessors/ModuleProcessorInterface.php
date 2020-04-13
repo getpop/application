@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\Application\ModuleProcessors;
 
 interface ModuleProcessorInterface extends \PoP\ConfigurationComponentModel\ModuleProcessors\ModuleProcessorInterface
