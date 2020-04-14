@@ -19,7 +19,7 @@
     "prefer-stable": true,
     "require": {
         "php" : "~7.1",
-        "getpop/component-model-configuration": "~0.1",
+        "getpop/component-model-configuration": "dev-master",
         "getpop/api": "~0.1",
         "getpop/definitions-emoji": "~0.1",
         "getpop/definitionpersistence": "~0.1"
