@@ -1,2 +1,2 @@
 <?php
-\PoP\Application\Component::init();
+//\PoP\Application\Component::initialize();
