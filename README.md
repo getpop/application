@@ -20,6 +20,14 @@ Via Composer
 composer require getpop/application
 ```
 
+## Usage
+
+Initialize the component:
+
+``` php
+\PoP\Application\Component::initialize();
+```
+
 ## Main Concepts
 
 ### Multidomain
