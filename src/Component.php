@@ -30,7 +30,7 @@ class Component extends AbstractComponent
     public static function getDependedMigrationPlugins(): array
     {
         return [
-            'migrate-component-model-configuration',
+            'getpop/migrate-component-model-configuration',
         ];
     }
 
