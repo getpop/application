@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace PoP\Application\Hooks;
-use PoP\ComponentModel\ModuleFilters\ModuleFilterManager;
+use PoP\ComponentModel\ModuleFiltering\ModuleFilterManager;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\Misc\GeneralUtils;
 use PoP\Engine\Hooks\AbstractHookSet;
