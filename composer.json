@@ -21,7 +21,7 @@
         "php": "~7.2",
         "getpop/component-model-configuration": "dev-master",
         "getpop/api": "dev-master",
-        "getpop/definitions-emoji": "~0.1",
+        "getpop/definitions-emoji": "dev-master",
         "getpop/definitionpersistence": "dev-master"
     },
     "require-dev": {
