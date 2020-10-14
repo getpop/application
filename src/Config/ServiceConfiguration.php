@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\Application\Config;
 
+use PoP\Definitions\DefinitionManagerInterface;
 use PoP\ComponentModel\Modules\DefinitionGroups;
 use PoP\Root\Component\PHPServiceConfigurationTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
@@ -24,7 +25,7 @@ class ServiceConfiguration
 
         // Set the definition resolver
         ContainerBuilderUtils::injectValuesIntoService(
-            'definition_manager',
+            DefinitionManagerInterface::class,
             'setDefinitionResolver',
             '@emoji_definition_resolver',
             DefinitionGroups::MODULES
