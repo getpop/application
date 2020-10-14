@@ -7,6 +7,7 @@ namespace PoP\Application\Config;
 use PoP\ComponentModel\Modules\DefinitionGroups;
 use PoP\Root\Component\PHPServiceConfigurationTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
+use PoP\ComponentModel\ModuleFiltering\ModuleFilterManagerInterface;
 
 class ServiceConfiguration
 {
@@ -16,7 +17,7 @@ class ServiceConfiguration
     {
         // Add ModuleFilter to the ModuleFilterManager
         ContainerBuilderUtils::injectServicesIntoService(
-            'module_filter_manager',
+            ModuleFilterManagerInterface::class,
             'PoP\\Application\\ModuleFilters',
             'add'
         );

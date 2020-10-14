@@ -1,21 +1,17 @@
 services:
     _defaults:
-        bind:
-            PoP\LooseContracts\LooseContractManagerInterface: '@loose_contract_manager'
-            PoP\Hooks\HooksAPIInterface: '@hooks_api'
-            PoP\Translation\TranslationAPIInterface: '@translation_api'
+        public: true
+        autowire: true
 
     PoP\Application\ModuleFilters\:
         resource: '../src/ModuleFilters/*'
+        public: false
 
     PoP\Application\Hooks\:
         resource: '../src/Hooks/*'
-        public: true
 
     PoP\Application\LooseContracts\:
         resource: '../src/LooseContracts/*'
-        public: true
 
-    engine:
+    PoP\ComponentModel\Engine\EngineInterface:
         class: \PoP\Application\Engine\Engine
-        public: true
