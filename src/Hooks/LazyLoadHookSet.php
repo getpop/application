@@ -6,7 +6,7 @@ namespace PoP\Application\Hooks;
 use PoP\ComponentModel\ModuleFiltering\ModuleFilterManager;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
 use PoP\ComponentModel\Misc\GeneralUtils;
-use PoP\Engine\Hooks\AbstractHookSet;
+use PoP\Hooks\AbstractHookSet;
 use PoP\Application\Constants\Actions;
 use PoP\Application\ModuleFilters\Lazy;
 use PoP\ComponentModel\Misc\RequestUtils;
