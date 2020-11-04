@@ -8,7 +8,10 @@ use PoP\LooseContracts\AbstractLooseContractSet;
 
 class LooseContractSet extends AbstractLooseContractSet
 {
-    public function getRequiredNames()
+    /**
+     * @return string[]
+     */
+    public function getRequiredNames(): array
     {
         return [
             // Options
