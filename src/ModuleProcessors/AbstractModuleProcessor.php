@@ -22,10 +22,10 @@ abstract class AbstractModuleProcessor extends \PoP\ConfigurationComponentModel\
             $ret['multidomaindataloadsources'] = $query_multidomain_urls;
             unset($ret['dataloadsource']);
         }
-        // if ($data_properties[DataloadingConstants::EXTERNALLOAD]) {
+        // if ($data_properties[DataloadingConstants::EXTERNALLOAD] ?? null) {
         //     $ret['externalload'] = true;
         // }
-        if ($data_properties[DataloadingConstants::LAZYLOAD]) {
+        if ($data_properties[DataloadingConstants::LAZYLOAD] ?? null) {
             $ret['lazyload'] = true;
         }
 

@@ -45,7 +45,7 @@ class LazyLoadHookSet extends AbstractHookSet
     {
         $data_properties = &$data_properties_in_array[0];
 
-        if ($data_properties[DataloadingConstants::LAZYLOAD]) {
+        if ($data_properties[DataloadingConstants::LAZYLOAD] ?? null) {
             $helperCalculations = &$helperCalculations_in_array[0];
             $helperCalculations['has-lazy-load'] = true;
         }
@@ -56,7 +56,7 @@ class LazyLoadHookSet extends AbstractHookSet
         $helperCalculations = &$helperCalculations_in_array[0];
 
         // Fetch the lazy-loaded data using the Background URL load
-        if ($helperCalculations['has-lazy-load']) {
+        if ($helperCalculations['has-lazy-load'] ?? null) {
             $url = GeneralUtils::addQueryArgs([
                 GD_URLPARAM_DATAOUTPUTITEMS => [
                     GD_URLPARAM_DATAOUTPUTITEMS_META,

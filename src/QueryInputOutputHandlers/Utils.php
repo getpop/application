@@ -12,13 +12,13 @@ class Utils
     public static function stopFetching($dbObjectIDOrIDs, array $data_properties)
     {
         // If data is not to be loaded, then "stop-fetching" as to not show the Load More button
-        if ($data_properties[DataloadingConstants::SKIPDATALOAD]) {
+        if ($data_properties[DataloadingConstants::SKIPDATALOAD] ?? null) {
             return true;
         }
 
         // Do not announce to stop loading when doing loadLatest
         $vars = ApplicationState::getVars();
-        if ($vars['loading-latest']) {
+        if (isset($vars['loading-latest']) && $vars['loading-latest']) {
             return false;
         }
 
