@@ -27,7 +27,7 @@ class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHa
         }
 
         // If it is lazy load, no need to calculate pagenumber / stop-fetching / etc
-        if ($data_properties[DataloadingConstants::LAZYLOAD] ?? null || $data_properties[DataloadingConstants::EXTERNALLOAD] ?? null || (isset($data_properties[DataloadingConstants::DATASOURCE]) && $data_properties[DataloadingConstants::DATASOURCE] != POP_DATALOAD_DATASOURCE_MUTABLEONREQUEST) || $vars['loading-latest'] ?? null) {
+        if (($data_properties[DataloadingConstants::LAZYLOAD] ?? null) || ($data_properties[DataloadingConstants::EXTERNALLOAD] ?? null) || (isset($data_properties[DataloadingConstants::DATASOURCE]) && $data_properties[DataloadingConstants::DATASOURCE] != POP_DATALOAD_DATASOURCE_MUTABLEONREQUEST) || ($vars['loading-latest'] ?? null)) {
             return $ret;
         }
 
@@ -48,7 +48,7 @@ class ListQueryInputOutputHandler extends \PoP\ComponentModel\QueryInputOutputHa
         $vars = ApplicationState::getVars();
 
         // If data is not to be loaded, then "stop-fetching" as to not show the Load More button
-        if ($data_properties[DataloadingConstants::SKIPDATALOAD] ?? null || (isset($data_properties[DataloadingConstants::DATASOURCE]) && $data_properties[DataloadingConstants::DATASOURCE] != POP_DATALOAD_DATASOURCE_MUTABLEONREQUEST)) {
+        if (($data_properties[DataloadingConstants::SKIPDATALOAD] ?? null) || (isset($data_properties[DataloadingConstants::DATASOURCE]) && $data_properties[DataloadingConstants::DATASOURCE] != POP_DATALOAD_DATASOURCE_MUTABLEONREQUEST)) {
             return $ret;
         }
 
