@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoP\Application\Hooks;
 
+use PoP\Root\App;
 use PoP\Application\Constants\Actions;
 use PoP\Application\ModuleFilters\Lazy;
 use PoP\Application\ModuleProcessors\DataloadingConstants;
@@ -13,7 +14,7 @@ use PoP\ConfigurationComponentModel\Constants\Targets;
 use PoP\ComponentModel\HelperServices\RequestHelperServiceInterface;
 use PoP\ComponentModel\Misc\GeneralUtils;
 use PoP\ComponentModel\ModuleFiltering\ModuleFilterManager;
-use PoP\BasicService\AbstractHookSet;
+use PoP\Root\Hooks\AbstractHookSet;
 
 class LazyLoadHookSet extends AbstractHookSet
 {
@@ -39,19 +40,19 @@ class LazyLoadHookSet extends AbstractHookSet
 
     protected function init(): void
     {
-        $this->getHooksAPI()->addAction(
+        App::addAction(
             '\PoP\ComponentModel\Engine:getModuleData:start',
             array($this, 'start'),
             10,
             4
         );
-        $this->getHooksAPI()->addAction(
+        App::addAction(
             '\PoP\ComponentModel\Engine:getModuleData:dataloading-module',
             array($this, 'calculateDataloadingModuleData'),
             10,
             8
         );
-        $this->getHooksAPI()->addAction(
+        App::addAction(
             '\PoP\ComponentModel\Engine:getModuleData:end',
             array($this, 'end'),
             10,
