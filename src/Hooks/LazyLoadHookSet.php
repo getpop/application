@@ -29,6 +29,7 @@ class LazyLoadHookSet extends AbstractHookSet
     }
     final protected function getRequestHelperService(): RequestHelperServiceInterface
     {
+        /** @var RequestHelperServiceInterface */
         return $this->requestHelperService ??= $this->instanceManager->getInstance(RequestHelperServiceInterface::class);
     }
     final public function setLazy(Lazy $lazy): void
@@ -37,6 +38,7 @@ class LazyLoadHookSet extends AbstractHookSet
     }
     final protected function getLazy(): Lazy
     {
+        /** @var Lazy */
         return $this->lazy ??= $this->instanceManager->getInstance(Lazy::class);
     }
 
@@ -62,13 +64,25 @@ class LazyLoadHookSet extends AbstractHookSet
         );
     }
 
+    /**
+     * @param array<string,mixed> $root_model_props_in_array
+     * @param array<string,mixed> $root_props_in_array
+     * @param array<string,mixed> $helperCalculations_in_array
+     */
     public function start(Component $root_component, array $root_model_props_in_array, array $root_props_in_array, array $helperCalculations_in_array): void
     {
         $helperCalculations = &$helperCalculations_in_array[0];
         $helperCalculations['has-lazy-load'] = false;
     }
 
-    public function calculateDataloadingComponentData(Component $component, array $component_props_in_array, array $data_properties_in_array, ?FeedbackItemResolution $dataaccess_checkpoint_validation, ?FeedbackItemResolution $actionexecution_checkpoint_validation, ?array $executed, array $objectIDOrIDs, array $helperCalculations_in_array): void
+    /**
+     * @param array<string,mixed> $component_props_in_array
+     * @param array<string,mixed> $data_properties_in_array
+     * @param string|int|array<string|int> $objectIDOrIDs
+     * @param array<string,mixed> $helperCalculations_in_array
+     * @param array<string,mixed>|null $executed
+     */
+    public function calculateDataloadingComponentData(Component $component, array $component_props_in_array, array $data_properties_in_array, ?FeedbackItemResolution $dataaccess_checkpoint_validation, ?FeedbackItemResolution $actionexecution_checkpoint_validation, ?array $executed, string|int|array $objectIDOrIDs, array $helperCalculations_in_array): void
     {
         $data_properties = &$data_properties_in_array[0];
 
@@ -78,6 +92,11 @@ class LazyLoadHookSet extends AbstractHookSet
         }
     }
 
+    /**
+     * @param array<string,mixed> $root_model_props_in_array
+     * @param array<string,mixed> $root_props_in_array
+     * @param array<string,mixed> $helperCalculations_in_array
+     */
     public function end(Component $root_component, array $root_model_props_in_array, array $root_props_in_array, array $helperCalculations_in_array, EngineInterface $engine): void
     {
         $helperCalculations = &$helperCalculations_in_array[0];
